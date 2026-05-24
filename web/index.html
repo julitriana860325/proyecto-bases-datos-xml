@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio XML & Oracle - Plataforma Interactiva</title>
+  <meta name="description"
+    content="Aplicación interactiva para simular, validar y generar el reporte del Laboratorio #1 de Almacenamiento y Validación XML en Oracle.">
+  <!-- Fuentes modernas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Contenedor Principal de la App -->
+  <div class="app-container">
+
+    <!-- Sidebar de Navegación -->
+    <aside class="sidebar">
+      <div class="logo-area">
+        <div class="logo-icon">XML</div>
+        <div class="logo-text">
+          <h2>Oracle XML DB</h2>
+          <span>Laboratorio #1</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" id="btn-intro" data-target="sec-intro">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+          </svg>
+          Presentación
+        </button>
+        <button class="nav-item" id="btn-sql" data-target="sec-sql">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z" />
+          </svg>
+          1. Consulta SQL/XML
+        </button>
+        <button class="nav-item" id="btn-xsd" data-target="sec-xsd">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path
+              d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+          </svg>
+          2. Esquema XML (XSD)
+        </button>
+        <button class="nav-item" id="btn-val" data-target="sec-val">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+          </svg>
+          3. Validador Interactivo
+        </button>
+        <button class="nav-item" id="btn-oracle" data-target="sec-oracle">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path
+              d="M12 2C7.58 2 4 3.79 4 6v12c0 2.21 3.58 4 8 4s8-1.79 8-4V6c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.43 6 2s-2.13 2-6 2-6-1.43-6-2 2.13-2 6-2zm0 14c-3.87 0-6-1.43-6-2v-2.23c1.39.72 3.5 1.23 6 1.23s4.61-.51 6-1.23V14c0 .57-2.13 2-6 2zm0-4c-3.87 0-6-1.43-6-2v-2.23c1.39.72 3.5 1.23 6 1.23s4.61-.51 6-1.23V10c0 .57-2.13 2-6 2z" />
+          </svg>
+          4. Registro e Inserción
+        </button>
+        <button class="nav-item" id="btn-xpath" data-target="sec-xpath">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z" />
+          </svg>
+          5. XPath & XQuery
+        </button>
+        <button class="nav-item" id="btn-xslt" data-target="sec-xslt">
+          <svg viewBox="0 0 24 24" class="nav-icon">
+            <path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z" />
+          </svg>
+          6. Transformación XSLT
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Desarrollado para Laboratorio de XML & BD</p>
+      </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+
+      <!-- SECCIÓN: PRESENTACIÓN -->
+      <section id="sec-intro" class="content-section active">
+        <header class="section-header">
+          <h1>Laboratorio #1: Almacenamiento y Validación XML en Oracle</h1>
+          <p class="subtitle">Entorno interactivo de simulación y herramientas para el desarrollo de actividades.</p>
+        </header>
+
+        <div class="card-grid">
+          <div class="card card-full">
+            <h2>Objetivos del Laboratorio</h2>
+            <p>Este laboratorio práctico tiene como objetivo aplicar conocimientos sobre bases de datos XML nativas e
+              híbridas en el SGBD Oracle 11g. Las actividades están divididas en 4 partes fundamentales:</p>
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-num">1</div>
+                <h3>Consulta SQL/XML</h3>
+                <p>Generación de estructuras XML a partir de tablas relacionales de la base de datos de ejemplo (esquema
+                  HR) uniendo <code>EMPLOYEES</code> y <code>DEPARTMENTS</code>.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-num">2</div>
+                <h3>Esquema XML (XSD)</h3>
+                <p>Construcción y modelado de un esquema XSD que defina y valide la estructura exacta de los datos XML
+                  generados en la consulta.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-num">3</div>
+                <h3>Validación</h3>
+                <p>Validación interactiva del archivo XML recuperado comparándolo contra las reglas y restricciones del
+                  esquema XSD diseñado.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-num">4</div>
+                <h3>Oracle XML DB</h3>
+                <p>Registro lógico del esquema mediante PL/SQL, creación de tablas tipadas <code>XMLTYPE</code> e
+                  inserción de datos correctos y erróneos para verificar la validación en el motor.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Requisitos del Entorno</h2>
+            <ul>
+              <li><strong>Motor BD:</strong> Oracle Database (11g o superior) con esquema de prueba <code>HR</code>
+                activado.</li>
+              <li><strong>Cliente SQL:</strong> Oracle SQL Developer para ejecutar comandos y consultas.</li>
+              <li><strong>Soporte XML DB:</strong> Activación y permisos sobre paquetes como
+                <code>DBMS_XMLSCHEMA</code>.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Entregables Requeridos</h2>
+            <ul>
+              <li><strong>Código Fuente:</strong> Ficheros SQL estructurados con consultas, registro e inserciones.</li>
+              <li><strong>Memoria de Práctica:</strong> Explicación de los pasos, justificación técnica del código y
+                capturas del proceso. Puedes generar un borrador en la última sección de esta web.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: 1. CONSULTA SQL/XML -->
+      <section id="sec-sql" class="content-section">
+        <header class="section-header">
+          <h1>Paso 1: Consulta SQL/XML Jerárquica</h1>
+          <p class="subtitle">Recuperación de datos relacionales combinando DEPARTMENTS y EMPLOYEES en formato XML.</p>
+        </header>
+
+        <div class="layout-split">
+          <div class="editor-panel">
+            <div class="panel-header">
+              <h3>Código SQL/XML en Oracle</h3>
+              <button class="btn btn-secondary btn-sm" id="btn-copy-sql">Copiar Código</button>
+            </div>
+            <div class="code-editor-container">
+              <pre><code class="language-sql" id="code-sql-content"></code></pre>
+            </div>
+            <div class="panel-actions">
+              <button class="btn btn-primary" id="btn-run-sql">Ejecutar Simulación de Consulta</button>
+            </div>
+          </div>
+
+          <div class="result-panel">
+            <div class="panel-header">
+              <h3>Resultado XML Generado</h3>
+              <div class="header-buttons">
+                <button class="btn btn-secondary btn-sm" id="btn-copy-xml-sim">Copiar XML</button>
+                <button class="btn btn-accent btn-sm" id="btn-download-xml">Descargar .xml</button>
+              </div>
+            </div>
+            <div class="code-editor-container">
+              <pre><code class="language-xml" id="code-xml-simulated">Haz clic en "Ejecutar Simulación" para ver el XML de salida...</code></pre>
+            </div>
+            <div class="info-alert">
+              <p><strong>Nota técnica:</strong> Esta consulta utiliza la agregación <code>XMLAGG</code> anidada para
+                agrupar los empleados por departamento, generando una jerarquía limpia 1 a N.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: 2. ESQUEMA XML (XSD) -->
+      <section id="sec-xsd" class="content-section">
+        <header class="section-header">
+          <h1>Paso 2: Esquema XML de Validación (XSD)</h1>
+          <p class="subtitle">Estructura formal que rige la conformación del documento XML para garantizar la calidad de
+            la información.</p>
+        </header>
+
+        <div class="card-grid">
+          <div class="card card-full">
+            <div class="panel-header">
+              <h2>Definición del Archivo XSD (schema.xsd)</h2>
+              <div class="header-buttons">
+                <button class="btn btn-secondary btn-sm" id="btn-copy-xsd">Copiar Esquema</button>
+                <button class="btn btn-accent btn-sm" id="btn-download-xsd">Descargar .xsd</button>
+              </div>
+            </div>
+            <div class="code-editor-container code-large">
+              <pre><code class="language-xml" id="code-xsd-content"></code></pre>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Estructura Jerárquica del Esquema (7 Tablas)</h2>
+            <div class="tree-view">
+              <ul>
+                <li><strong>Corporacion</strong> (Raíz, ComplexType)
+                  <ul>
+                    <li><strong>Regiones</strong> (Secuencia)
+                      <ul>
+                        <li><strong>Region</strong> (maxOccurs: unbounded, Atrib: <code>id</code>, <code>nombre</code>)
+                          <ul>
+                            <li><strong>Paises</strong> (minOccurs: 0)
+                              <ul>
+                                <li><strong>Pais</strong> (maxOccurs: unbounded, Atrib: <code>id</code>,
+                                  <code>nombre</code>)
+                                  <ul>
+                                    <li><strong>Localizaciones</strong> (minOccurs: 0)
+                                      <ul>
+                                        <li><strong>Localizacion</strong> (maxOccurs: unbounded, Atrib: <code>id</code>)
+                                          <ul>
+                                            <li><code>Direccion</code> (xs:string)</li>
+                                            <li><code>CodigoPostal</code> (xs:string)</li>
+                                            <li><code>Ciudad</code> (xs:string)</li>
+                                            <li><code>Provincia</code> (xs:string)</li>
+                                            <li><strong>Departamentos</strong> (minOccurs: 0)
+                                              <ul>
+                                                <li><strong>Departamento</strong> (maxOccurs: unbounded, Atrib:
+                                                  <code>id</code>, <code>nombre</code>)
+                                                  <ul>
+                                                    <li><strong>Empleados</strong> (minOccurs: 0)
+                                                      <ul>
+                                                        <li><strong>Empleado</strong> (maxOccurs: unbounded, Atrib:
+                                                          <code>id</code>)
+                                                          <ul>
+                                                            <li><code>Nombre</code> (xs:string)</li>
+                                                            <li><code>Apellido</code> (xs:string)</li>
+                                                            <li><code>Correo</code> (xs:string)</li>
+                                                            <li><code>Telefono</code> (xs:string)</li>
+                                                            <li><code>FechaContratacion</code> (xs:date)</li>
+                                                            <li><code>Salario</code> (xs:decimal)</li>
+                                                            <li><code>Comision</code> (xs:decimal)</li>
+                                                            <li><strong>TrabajoActual</strong> (Atrib: <code>id</code>,
+                                                              <code>titulo</code>)
+                                                              <ul>
+                                                                <li><code>SalarioMinimo</code> (xs:decimal)</li>
+                                                                <li><code>SalarioMaximo</code> (xs:decimal)</li>
+                                                              </ul>
+                                                            </li>
+                                                            <li><strong>HistorialLaboral</strong> (minOccurs: 0)
+                                                              <ul>
+                                                                <li><strong>Historial</strong> (maxOccurs: unbounded)
+                                                                  <ul>
+                                                                    <li><code>FechaInicio</code> (xs:date)</li>
+                                                                    <li><code>FechaFin</code> (xs:date)</li>
+                                                                    <li><code>IdTrabajo</code> (xs:string)</li>
+                                                                    <li><code>IdDepartamento</code> (xs:integer)</li>
+                                                                  </ul>
+                                                                </li>
+                                                              </ul>
+                                                            </li>
+                                                          </ul>
+                                                        </li>
+                                                      </ul>
+                                                    </li>
+                                                  </ul>
+                                                </li>
+                                              </ul>
+                                            </li>
+                                          </ul>
+                                        </li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Reglas de Validación Clave (7 Niveles)</h2>
+            <ul>
+              <li><strong>Integridad de Fechas:</strong> Elementos como <code>FechaContratacion</code>,
+                <code>FechaInicio</code> y <code>FechaFin</code> deben seguir el formato ISO de fecha
+                (<code>xs:date</code>: YYYY-MM-DD).</li>
+              <li><strong>Atributos Requeridos:</strong> Atributo <code>id</code> es obligatorio en los elementos de
+                Región, País, Localización, Departamento, Empleado y Trabajo.</li>
+              <li><strong>Restricciones de Tipos:</strong> El atributo <code>id</code> de País y Trabajo es de tipo
+                cadena (`xs:string`), mientras que el resto de IDs son enteros (`xs:integer`). Los salarios y comisiones
+                deben ser decimales (`xs:decimal`).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: 3. VALIDADOR INTERACTIVO -->
+      <section id="sec-val" class="content-section">
+        <header class="section-header">
+          <h1>Paso 3: Validador XML vs XSD Interactivo</h1>
+          <p class="subtitle">Herramienta en tiempo real para verificar si un archivo XML cumple con las reglas del
+            esquema XSD.</p>
+        </header>
+
+        <div class="layout-split">
+          <div class="editor-panel">
+            <div class="panel-header">
+              <h3>Entrada XML (Editable)</h3>
+              <div class="header-buttons">
+                <button class="btn btn-secondary btn-sm" id="btn-load-valid">Cargar Válido</button>
+                <button class="btn btn-secondary btn-sm" id="btn-load-invalid">Cargar Inválido</button>
+              </div>
+            </div>
+            <textarea class="xml-textarea" id="txt-val-xml" placeholder="Pega tu XML aquí..."></textarea>
+          </div>
+
+          <div class="result-panel">
+            <div class="panel-header">
+              <h3>Resultados de la Validación</h3>
+              <button class="btn btn-primary btn-sm" id="btn-run-validation">Validar XML</button>
+            </div>
+
+            <div class="validation-status-box idled" id="validation-status">
+              <div class="status-icon" id="val-status-icon">?</div>
+              <div class="status-details">
+                <h3 id="val-status-title">Esperando validación</h3>
+                <p id="val-status-desc">Carga un documento XML y presiona el botón "Validar XML".</p>
+              </div>
+            </div>
+
+            <div class="error-log-card" id="error-log-card" style="display:none;">
+              <h3>Detalles del Análisis:</h3>
+              <ul class="error-list" id="val-errors-list">
+                <!-- Se poblará con JS -->
+              </ul>
+            </div>
+
+            <div class="info-alert">
+              <p>Esta herramienta analiza la estructura jerárquica del XML, comprueba los tipos de datos de los
+                elementos de texto (como el salario decimal) y verifica la presencia de atributos requeridos (como los
+                IDs).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: 4. REGISTRO E INSERCIÓN EN ORACLE -->
+      <section id="sec-oracle" class="content-section">
+        <header class="section-header">
+          <h1>Paso 4: Operaciones XML en Oracle (XML DB)</h1>
+          <p class="subtitle">Registro de esquema, creación de tabla estructurada y simulación del comportamiento del
+            motor de BD.</p>
+        </header>
+
+        <div class="layout-split">
+          <div class="editor-panel">
+            <div class="panel-header">
+              <h3>Script SQL de Registro y Pruebas</h3>
+              <button class="btn btn-secondary btn-sm" id="btn-copy-reg-sql">Copiar Script SQL</button>
+            </div>
+            <div class="code-editor-container">
+              <pre><code class="language-sql" id="code-reg-content"></code></pre>
+            </div>
+          </div>
+
+          <div class="result-panel">
+            <div class="panel-header">
+              <h3>Simulación de Consola Oracle (SQL Developer)</h3>
+            </div>
+
+            <div class="console-actions">
+              <button class="btn btn-secondary btn-sm" id="btn-sim-reg">1. Registrar Esquema</button>
+              <button class="btn btn-secondary btn-sm" id="btn-sim-insert-ok" disabled>2. Insertar XML Válido</button>
+              <button class="btn btn-secondary btn-sm" id="btn-sim-insert-err" disabled>3. Insertar XML
+                Inválido</button>
+              <button class="btn btn-accent btn-sm" id="btn-sim-clear">Limpiar Consola</button>
+            </div>
+
+            <div class="db-console" id="oracle-console">
+              <div class="console-line system-msg">Consola Oracle SQL*Plus inicializada. Registre el esquema XML para
+                comenzar...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- SECCIÓN: 5. XPATH & XQUERY -->
+      <section id="sec-xpath" class="content-section">
+        <header class="section-header">
+          <h1>Paso 5: Consultas XPath y XQuery</h1>
+          <p class="subtitle">Explora los datos XML mediante XPath y una demo de consultas XQuery en la aplicación.</p>
+        </header>
+
+        <div class="layout-split">
+          <div class="editor-panel">
+            <div class="panel-header">
+              <h3>XML de Entrada y Consulta XPath</h3>
+              <div class="header-buttons">
+                <button class="btn btn-secondary btn-sm" id="btn-load-xpath-xml">Cargar XML de Ejemplo</button>
+              </div>
+            </div>
+            <textarea class="xml-textarea" id="txt-xpath-xml" placeholder="Pega tu XML aquí..."></textarea>
+            <div class="panel-actions" style="margin-top: 16px; gap: 8px; flex-wrap: wrap;">
+              <select id="select-xpath-sample" class="btn btn-secondary btn-sm" style="flex:1; text-align:left; min-width: 220px;">
+                <option value="/Corporacion/Regiones/Region/Paises/Pais/Localizaciones/Localizacion/Departamentos/Departamento/Empleados/Empleado/Nombre/text()">Nombres de todos los empleados</option>
+                <option value="count(/Corporacion/Regiones/Region/Paises/Pais/Localizaciones/Localizacion/Departamentos/Departamento/Empleados/Empleado)">Cantidad total de empleados</option>
+                <option value="sum(/Corporacion/Regiones/Region/Paises/Pais/Localizaciones/Localizacion/Departamentos/Departamento/Empleados/Empleado/Salario)">Suma de todos los salarios</option>
+                <option value="//Empleado[Salario&gt;13000]/Nombre/text()">Empleados con salario mayor a 13000</option>
+                <option value="count(//Pais)">Total de países registrados</option>
+                <option value="//HistorialLaboral/Historial[IdTrabajo='SA_REP']/ancestor::Empleado/Nombre/text()">Empleados con historial SA_REP</option>
+              </select>
+              <button class="btn btn-primary btn-sm" id="btn-run-xpath">Ejecutar XPath</button>
+            </div>
+            <div class="form-group" style="margin-top: 16px;">
+              <label for="txt-xpath-query">Consulta XPath libre</label>
+              <textarea id="txt-xpath-query" class="xml-textarea" style="height: 120px;">/Corporacion/Regiones/Region/Paises/Pais/Localizaciones/Localizacion/Departamentos/Departamento/Empleados/Empleado/Nombre/text()</textarea>
+            </div>
+          </div>
+
+          <div class="result-panel">
+            <div class="panel-header">
+              <h3>Resultado XPath / XQuery</h3>
+            </div>
+            <div class="code-editor-container">
+              <pre><code class="language-text" id="code-xpath-result">Ejecuta una consulta XPath o XQuery para ver resultados aquí.</code></pre>
+            </div>
+            <div class="panel-actions" style="margin-top: 16px; gap:8px; flex-wrap:wrap;">
+              <button class="btn btn-primary btn-sm" id="btn-run-xquery">Ejecutar XQuery</button>
+              <select id="select-xquery-sample" class="btn btn-secondary btn-sm" style="flex:1; text-align:left; min-width: 220px;">
+                <option value="empleados">Lista de empleados con nombre y apellido</option>
+                <option value="paises">Resumen de países</option>
+                <option value="departamentos">Departamentos con cantidad de empleados</option>
+                <option value="salariosAltos">Empleados con salario > 13000</option>
+                <option value="regionesPaises">Cantidad de países por región</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-top: 12px;">
+              <label><input type="checkbox" id="chk-use-exist" checked /> Usar eXist-db local (http://localhost:8080/exist)</label>
+            </div>
+            <div class="info-alert">
+              <p>XPath permite buscar nodos y valores dentro del XML; la demo de XQuery puede usar eXist-db si está activo y configurado.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: 6. XSLT -->
+      <section id="sec-xslt" class="content-section">
+        <header class="section-header">
+          <h1>Paso 6: Transformación XSLT</h1>
+          <p class="subtitle">Convierte el XML a HTML usando una hoja XSLT de ejemplo.</p>
+        </header>
+
+        <div class="layout-split">
+          <div class="editor-panel">
+            <div class="panel-header">
+              <h3>Hoja de Estilo XSLT</h3>
+              <button class="btn btn-primary btn-sm" id="btn-transform-xslt">Transformar a HTML</button>
+            </div>
+            <div class="code-editor-container code-large">
+              <pre><code class="language-xml" id="code-xslt-content"></code></pre>
+            </div>
+          </div>
+
+          <div class="result-panel">
+            <div class="panel-header">
+              <h3>HTML Generado</h3>
+            </div>
+            <div class="code-editor-container" style="height:auto; min-height: 420px; overflow:auto;">
+              <div id="xslt-transform-output" style="color: var(--color-text); font-family: var(--font-sans);"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Carga del script principal -->
+  <script src="app.js"></script>
+</body>
+
+</html>

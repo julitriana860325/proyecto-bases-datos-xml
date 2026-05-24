@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Corporacion>
+  <Regiones>
+    <!-- ERROR 1: El atributo id de Region debe ser entero (xs:integer), pero tiene texto -->
+    <Region id="Europa-Uno" nombre="Europe">
+      <Paises>
+        <!-- ERROR 2: El elemento Pais requiere obligatoriamente el atributo 'id' (use="required") -->
+        <Pais nombre="United Kingdom">
+          <Localizaciones>
+            <Localizacion id="2400">
+              <Ciudad>London</Ciudad>
+              <Departamentos>
+                <Departamento id="80" nombre="Sales">
+                  <Empleados>
+                    <Empleado id="145">
+                      <Nombre>John</Nombre>
+                      <Apellido>Russell</Apellido>
+                      <Correo>JRUSSELL</Correo>
+                      <!-- ERROR 3: FechaContratacion debe ser de tipo xs:date (YYYY-MM-DD), pero tiene formato local -->
+                      <FechaContratacion>01/10/2004</FechaContratacion>
+                      <Salario>14000.00</Salario>
+                      
+                      <!-- ERROR 4: TrabajoActual no posee el atributo obligatorio 'titulo' -->
+                      <TrabajoActual id="SA_MAN">
+                        <SalarioMinimo>10000.00</SalarioMinimo>
+                      </TrabajoActual>
+
+                      <HistorialLaboral>
+                        <Historial>
+                          <FechaInicio>1997-01-01</FechaInicio>
+                          <!-- ERROR 5: FechaFin no es una fecha válida de tipo xs:date -->
+                          <FechaFin>FIN_DE_SIGLO</FechaFin>
+                          <IdTrabajo>SA_REP</IdTrabajo>
+                          <IdDepartamento>80</IdDepartamento>
+                        </Historial>
+                      </HistorialLaboral>
+                    </Empleado>
+                  </Empleados>
+                </Departamento>
+              </Departamentos>
+            </Localizacion>
+          </Localizaciones>
+        </Pais>
+      </Paises>
+    </Region>
+  </Regiones>
+</Corporacion>

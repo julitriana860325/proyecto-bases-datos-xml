@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Corporacion>
+  <Regiones>
+    <!-- Región 1: Europe -->
+    <Region id="1" nombre="Europe">
+      <Paises>
+        <!-- País: UK (United Kingdom) -->
+        <Pais id="UK" nombre="United Kingdom">
+          <Localizaciones>
+            <!-- Localización: 2400 (London) -->
+            <Localizacion id="2400">
+              <Direccion>8204 Arthur St</Direccion>
+              <CodigoPostal>Magna</CodigoPostal>
+              <Ciudad>London</Ciudad>
+              <Provincia>Greater London</Provincia>
+              <Departamentos>
+                <!-- Departamento: 80 (Sales) -->
+                <Departamento id="80" nombre="Sales">
+                  <Empleados>
+                    <!-- Empleado: 145 (John Russell) -->
+                    <Empleado id="145">
+                      <Nombre>John</Nombre>
+                      <Apellido>Russell</Apellido>
+                      <Correo>JRUSSELL</Correo>
+                      <Telefono>011.44.1344.429268</Telefono>
+                      <FechaContratacion>2004-10-01</FechaContratacion>
+                      <Salario>14000.00</Salario>
+                      
+                      <!-- Trabajo Actual de Empleado (Jobs) -->
+                      <TrabajoActual id="SA_MAN" titulo="Sales Manager">
+                        <SalarioMinimo>10000.00</SalarioMinimo>
+                        <SalarioMaximo>20080.00</SalarioMaximo>
+                      </TrabajoActual>
+
+                      <!-- Historial Laboral del Empleado (Job History) -->
+                      <HistorialLaboral>
+                        <Historial>
+                          <FechaInicio>1997-01-01</FechaInicio>
+                          <FechaFin>1999-12-31</FechaFin>
+                          <IdTrabajo>SA_REP</IdTrabajo>
+                          <IdDepartamento>80</IdDepartamento>
+                        </Historial>
+                        <Historial>
+                          <FechaInicio>2000-01-01</FechaInicio>
+                          <FechaFin>2004-09-30</FechaFin>
+                          <IdTrabajo>SA_MAN</IdTrabajo>
+                          <IdDepartamento>80</IdDepartamento>
+                        </Historial>
+                      </HistorialLaboral>
+                    </Empleado>
+                  </Empleados>
+                </Departamento>
+              </Departamentos>
+            </Localizacion>
+          </Localizaciones>
+        </Pais>
+      </Paises>
+    </Region>
+  </Regiones>
+</Corporacion>

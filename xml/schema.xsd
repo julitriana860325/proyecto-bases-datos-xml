@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <!-- Elemento Raíz de la Corporación -->
+  <xs:element name="Corporacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Regiones">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- 1. Tabla REGIONS -->
+              <xs:element name="Region" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Paises" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <!-- 2. Tabla COUNTRIES -->
+                          <xs:element name="Pais" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Localizaciones" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <!-- 3. Tabla LOCATIONS -->
+                                      <xs:element name="Localizacion" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Direccion" type="xs:string" minOccurs="0"/>
+                                            <xs:element name="CodigoPostal" type="xs:string" minOccurs="0"/>
+                                            <xs:element name="Ciudad" type="xs:string"/>
+                                            <xs:element name="Provincia" type="xs:string" minOccurs="0"/>
+                                            <xs:element name="Departamentos" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <!-- 4. Tabla DEPARTMENTS -->
+                                                  <xs:element name="Departamento" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="Empleados" minOccurs="0">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <!-- 5. Tabla EMPLOYEES -->
+                                                              <xs:element name="Empleado" maxOccurs="unbounded">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="Nombre" type="xs:string" minOccurs="0"/>
+                                                                    <xs:element name="Apellido" type="xs:string"/>
+                                                                    <xs:element name="Correo" type="xs:string"/>
+                                                                    <xs:element name="Telefono" type="xs:string" minOccurs="0"/>
+                                                                    <xs:element name="FechaContratacion" type="xs:date"/>
+                                                                    <xs:element name="Salario" type="xs:decimal" minOccurs="0"/>
+                                                                    <xs:element name="Comision" type="xs:decimal" minOccurs="0"/>
+                                                                    
+                                                                    <!-- 6. Tabla JOBS (Relación del Trabajo Actual) -->
+                                                                    <xs:element name="TrabajoActual">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="SalarioMinimo" type="xs:decimal" minOccurs="0"/>
+                                                                          <xs:element name="SalarioMaximo" type="xs:decimal" minOccurs="0"/>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="id" type="xs:string" use="required"/>
+                                                                        <xs:attribute name="titulo" type="xs:string" use="required"/>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+
+                                                                    <!-- 7. Tabla JOB_HISTORY (Historial Laboral) -->
+                                                                    <xs:element name="HistorialLaboral" minOccurs="0">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="Historial" maxOccurs="unbounded">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="FechaInicio" type="xs:date"/>
+                                                                                <xs:element name="FechaFin" type="xs:date"/>
+                                                                                <xs:element name="IdTrabajo" type="xs:string"/>
+                                                                                <xs:element name="IdDepartamento" type="xs:integer" minOccurs="0"/>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                    
+                                                                  </xs:sequence>
+                                                                  <!-- Atributo ID del Empleado (NUMBER(6)) -->
+                                                                  <xs:attribute name="id" type="xs:integer" use="required"/>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <!-- Atributos del Departamento -->
+                                                      <xs:attribute name="id" type="xs:integer" use="required"/>
+                                                      <xs:attribute name="nombre" type="xs:string" use="required"/>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <!-- Atributo de la Localización -->
+                                          <xs:attribute name="id" type="xs:integer" use="required"/>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <!-- Atributos del País (id es CHAR(2)) -->
+                              <xs:attribute name="id" type="xs:string" use="required"/>
+                              <xs:attribute name="nombre" type="xs:string"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <!-- Atributos de la Región -->
+                  <xs:attribute name="id" type="xs:integer" use="required"/>
+                  <xs:attribute name="nombre" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
