@@ -25,7 +25,7 @@
                       <Telefono>011.44.1344.429268</Telefono>
                       <FechaContratacion>2004-10-01</FechaContratacion>
                       <Salario>14000.00</Salario>
-                      
+
                       <!-- Trabajo Actual de Empleado (Jobs) -->
                       <TrabajoActual id="SA_MAN" titulo="Sales Manager">
                         <SalarioMinimo>10000.00</SalarioMinimo>
@@ -47,6 +47,62 @@
                           <IdDepartamento>80</IdDepartamento>
                         </Historial>
                       </HistorialLaboral>
+                    </Empleado>
+
+                    <!-- Empleado: 146 (Maria Gomez) -->
+                    <Empleado id="146">
+                      <Nombre>Maria</Nombre>
+                      <Apellido>Gomez</Apellido>
+                      <Correo>MGOMEZ</Correo>
+                      <Telefono>011.44.1344.429269</Telefono>
+                      <FechaContratacion>2010-06-15</FechaContratacion>
+                      <Salario>13500.00</Salario>
+                      <TrabajoActual id="SA_REP" titulo="Sales Representative">
+                        <SalarioMinimo>8000.00</SalarioMinimo>
+                        <SalarioMaximo>15000.00</SalarioMaximo>
+                      </TrabajoActual>
+                    </Empleado>
+
+                    <!-- Empleado: 147 (Luis Martinez) -->
+                    <Empleado id="147">
+                      <Nombre>Luis</Nombre>
+                      <Apellido>Martinez</Apellido>
+                      <Correo>LMARTINEZ</Correo>
+                      <Telefono>011.44.1344.429270</Telefono>
+                      <FechaContratacion>2012-03-01</FechaContratacion>
+                      <Salario>12000.00</Salario>
+                      <TrabajoActual id="SA_REP" titulo="Sales Representative">
+                        <SalarioMinimo>8000.00</SalarioMinimo>
+                        <SalarioMaximo>15000.00</SalarioMaximo>
+                      </TrabajoActual>
+                    </Empleado>
+
+                    <!-- Empleado: 148 (Ana Ruiz) -->
+                    <Empleado id="148">
+                      <Nombre>Ana</Nombre>
+                      <Apellido>Ruiz</Apellido>
+                      <Correo>ARUIZ</Correo>
+                      <Telefono>011.44.1344.429271</Telefono>
+                      <FechaContratacion>2015-09-21</FechaContratacion>
+                      <Salario>11000.00</Salario>
+                      <TrabajoActual id="SA_REP" titulo="Sales Representative">
+                        <SalarioMinimo>8000.00</SalarioMinimo>
+                        <SalarioMaximo>15000.00</SalarioMaximo>
+                      </TrabajoActual>
+                    </Empleado>
+
+                    <!-- Empleado: 149 (Carlos Perez) -->
+                    <Empleado id="149">
+                      <Nombre>Carlos</Nombre>
+                      <Apellido>Perez</Apellido>
+                      <Correo>CPEREZ</Correo>
+                      <Telefono>011.44.1344.429272</Telefono>
+                      <FechaContratacion>2018-11-05</FechaContratacion>
+                      <Salario>12500.00</Salario>
+                      <TrabajoActual id="SA_REP" titulo="Sales Representative">
+                        <SalarioMinimo>8000.00</SalarioMinimo>
+                        <SalarioMaximo>15000.00</SalarioMaximo>
+                      </TrabajoActual>
                     </Empleado>
                   </Empleados>
                 </Departamento>

@@ -223,10 +223,6 @@ const XML_SCHEMA_CODE = `<?xml version="1.0" encoding="UTF-8"?>
   </xs:element>
 </xs:schema>`;
 
-const USE_EXIST_DB = true;
-const EXIST_REST_ENDPOINT = "http://localhost:8080/exist/rest/db";
-const EXIST_COLLECTION_DOC = "/db/hr-data/data_valid.xml";
-
 const SQL_REGISTRATION_CODE = `-- Script PL/SQL para registrar el esquema en Oracle XML DB e insertar datos
 DECLARE
   v_schema_xsd CLOB;
@@ -315,18 +311,23 @@ COMMIT;`;
 const VALID_XML_SAMPLE = `<?xml version="1.0" encoding="UTF-8"?>
 <Corporacion>
   <Regiones>
+    <!-- Región 1: Europe -->
     <Region id="1" nombre="Europe">
       <Paises>
+        <!-- País: UK (United Kingdom) -->
         <Pais id="UK" nombre="United Kingdom">
           <Localizaciones>
+            <!-- Localización: 2400 (London) -->
             <Localizacion id="2400">
               <Direccion>8204 Arthur St</Direccion>
               <CodigoPostal>Magna</CodigoPostal>
               <Ciudad>London</Ciudad>
               <Provincia>Greater London</Provincia>
               <Departamentos>
+                <!-- Departamento: 80 (Sales) -->
                 <Departamento id="80" nombre="Sales">
                   <Empleados>
+                    <!-- Empleado: 145 (John Russell) -->
                     <Empleado id="145">
                       <Nombre>John</Nombre>
                       <Apellido>Russell</Apellido>
@@ -334,10 +335,14 @@ const VALID_XML_SAMPLE = `<?xml version="1.0" encoding="UTF-8"?>
                       <Telefono>011.44.1344.429268</Telefono>
                       <FechaContratacion>2004-10-01</FechaContratacion>
                       <Salario>14000.00</Salario>
+
+                      <!-- Trabajo Actual de Empleado (Jobs) -->
                       <TrabajoActual id="SA_MAN" titulo="Sales Manager">
                         <SalarioMinimo>10000.00</SalarioMinimo>
                         <SalarioMaximo>20080.00</SalarioMaximo>
                       </TrabajoActual>
+
+                      <!-- Historial Laboral del Empleado (Job History) -->
                       <HistorialLaboral>
                         <Historial>
                           <FechaInicio>1997-01-01</FechaInicio>
@@ -352,6 +357,62 @@ const VALID_XML_SAMPLE = `<?xml version="1.0" encoding="UTF-8"?>
                           <IdDepartamento>80</IdDepartamento>
                         </Historial>
                       </HistorialLaboral>
+                    </Empleado>
+
+                    <!-- Empleado: 146 (Maria Gomez) -->
+                    <Empleado id="146">
+                      <Nombre>Maria</Nombre>
+                      <Apellido>Gomez</Apellido>
+                      <Correo>MGOMEZ</Correo>
+                      <Telefono>011.44.1344.429269</Telefono>
+                      <FechaContratacion>2010-06-15</FechaContratacion>
+                      <Salario>13500.00</Salario>
+                      <TrabajoActual id="SA_REP" titulo="Sales Representative">
+                        <SalarioMinimo>8000.00</SalarioMinimo>
+                        <SalarioMaximo>15000.00</SalarioMaximo>
+                      </TrabajoActual>
+                    </Empleado>
+
+                    <!-- Empleado: 147 (Luis Martinez) -->
+                    <Empleado id="147">
+                      <Nombre>Luis</Nombre>
+                      <Apellido>Martinez</Apellido>
+                      <Correo>LMARTINEZ</Correo>
+                      <Telefono>011.44.1344.429270</Telefono>
+                      <FechaContratacion>2012-03-01</FechaContratacion>
+                      <Salario>12000.00</Salario>
+                      <TrabajoActual id="SA_REP" titulo="Sales Representative">
+                        <SalarioMinimo>8000.00</SalarioMinimo>
+                        <SalarioMaximo>15000.00</SalarioMaximo>
+                      </TrabajoActual>
+                    </Empleado>
+
+                    <!-- Empleado: 148 (Ana Ruiz) -->
+                    <Empleado id="148">
+                      <Nombre>Ana</Nombre>
+                      <Apellido>Ruiz</Apellido>
+                      <Correo>ARUIZ</Correo>
+                      <Telefono>011.44.1344.429271</Telefono>
+                      <FechaContratacion>2015-09-21</FechaContratacion>
+                      <Salario>11000.00</Salario>
+                      <TrabajoActual id="SA_REP" titulo="Sales Representative">
+                        <SalarioMinimo>8000.00</SalarioMinimo>
+                        <SalarioMaximo>15000.00</SalarioMaximo>
+                      </TrabajoActual>
+                    </Empleado>
+
+                    <!-- Empleado: 149 (Carlos Perez) -->
+                    <Empleado id="149">
+                      <Nombre>Carlos</Nombre>
+                      <Apellido>Perez</Apellido>
+                      <Correo>CPEREZ</Correo>
+                      <Telefono>011.44.1344.429272</Telefono>
+                      <FechaContratacion>2018-11-05</FechaContratacion>
+                      <Salario>12500.00</Salario>
+                      <TrabajoActual id="SA_REP" titulo="Sales Representative">
+                        <SalarioMinimo>8000.00</SalarioMinimo>
+                        <SalarioMaximo>15000.00</SalarioMaximo>
+                      </TrabajoActual>
                     </Empleado>
                   </Empleados>
                 </Departamento>
@@ -906,7 +967,6 @@ function initXPathXQuery() {
   const btnRunXPath = document.getElementById("btn-run-xpath");
   const btnRunXQuery = document.getElementById("btn-run-xquery");
   const selectXQuery = document.getElementById("select-xquery-sample");
-  const chkUseExist = document.getElementById("chk-use-exist");
   const resultOutput = document.getElementById("code-xpath-result");
 
   txtXml.value = VALID_XML_SAMPLE;
@@ -927,7 +987,7 @@ function initXPathXQuery() {
   });
 
   btnRunXQuery.addEventListener("click", async () => {
-    resultOutput.textContent = await runXQuerySimulation(selectXQuery.value, txtXml.value, chkUseExist.checked);
+    resultOutput.textContent = await runXQuerySimulation(selectXQuery.value, txtXml.value);
   });
 }
 
@@ -969,11 +1029,7 @@ function runXPathQuery(xmlText, query) {
   }
 }
 
-async function runXQuerySimulation(queryId, xmlText, useExistDb) {
-  if (useExistDb && USE_EXIST_DB) {
-    const xquery = getExistXQuery(queryId);
-    return xquery ? await executeExistXQuery(xquery) : "Consulta XQuery no soportada para eXist-db.";
-  }
+async function runXQuerySimulation(queryId, xmlText) {
 
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(xmlText, "application/xml");
@@ -1090,44 +1146,6 @@ async function runXQuerySimulation(queryId, xmlText, useExistDb) {
   }
 
   return "Consulta XQuery no soportada en la demo. Selecciona una opción válida.";
-}
-
-function getExistXQuery(queryId) {
-  switch (queryId) {
-    case "empleados":
-      return `for $e in doc('${EXIST_COLLECTION_DOC}')//Empleado return <Empleado>{ $e/Nombre, $e/Apellido }</Empleado>`;
-    case "paises":
-      return `for $p in doc('${EXIST_COLLECTION_DOC}')//Pais return <Pais id="{data($p/@id)}" nombre="{data($p/@nombre)}"/>`;
-    case "departamentos":
-      return `for $d in doc('${EXIST_COLLECTION_DOC}')//Departamento return <Departamento nombre="{data($d/@nombre)}"><EmpleadoCount>{count($d/Empleados/Empleado)}</EmpleadoCount></Departamento>`;
-    case "salariosAltos":
-      return `for $e in doc('${EXIST_COLLECTION_DOC}')//Empleado[Salario > 13000] return <Empleado><Nombre>{data($e/Nombre)}</Nombre><Apellido>{data($e/Apellido)}</Apellido><Salario>{data($e/Salario)}</Salario></Empleado>`;
-    case "regionesPaises":
-      return `for $r in doc('${EXIST_COLLECTION_DOC}')//Region return <Region nombre="{data($r/@nombre)}"><PaisCount>{count($r/Paises/Pais)}</PaisCount></Region>`;
-    default:
-      return null;
-  }
-}
-
-async function executeExistXQuery(xquery) {
-  try {
-    const endpoint = `${EXIST_REST_ENDPOINT}?_query=${encodeURIComponent(xquery)}`;
-    const response = await fetch(endpoint, {
-      method: "GET",
-      headers: {
-        "Accept": "application/xml,text/xml,text/plain"
-      }
-    });
-
-    if (!response.ok) {
-      return `Error eXist-db: ${response.status} ${response.statusText}`;
-    }
-
-    const text = await response.text();
-    return text.trim() || "La consulta eXist-db devolvió resultado vacío.";
-  } catch (error) {
-    return `Fallo al conectar con eXist-db: ${error.message}`;
-  }
 }
 
 function initXsltTransformer() {

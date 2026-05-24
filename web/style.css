@@ -46,6 +46,10 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
@@ -55,15 +59,18 @@ body {
     radial-gradient(at 100% 100%, hsla(180, 50%, 15%, 0.3) 0, transparent 50%);
   background-attachment: fixed;
   color: var(--color-text);
+  height: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: auto;
   line-height: 1.6;
 }
 
 /* 3. DISTRIBUCIÓN DEL CONTENEDOR PRINCIPAL */
 .app-container {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* 4. ESTILOS DEL SIDEBAR */
@@ -76,6 +83,7 @@ body {
   padding: 24px;
   position: fixed;
   height: 100vh;
+  overflow-y: auto;
   z-index: 100;
   box-shadow: var(--shadow-lg);
 }
@@ -178,7 +186,9 @@ body {
   margin-left: 280px;
   flex-grow: 1;
   padding: 40px;
-  min-height: 100vh;
+  /* make main area scrollable when content overflows */
+  max-height: 100vh;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -233,6 +243,21 @@ body {
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-lg);
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Asegurar que las tarjetas se alineen por arriba y su contenido permita scroll interno */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Forzar dos columnas en pantallas de escritorio para evitar que las tarjetas se apilen */
+@media (min-width: 900px) {
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
 }
 
 .card:hover {
@@ -632,6 +657,12 @@ body {
 
 .tree-view li:last-child::after {
   height: 10px;
+}
+
+/* Limitar altura del árbol y permitir desplazamiento interno para evitar desbordes */
+.tree-view {
+  max-height: 520px;
+  overflow: auto;
 }
 
 /* 10. CONSOLA DE BASE DE DATOS (ORACLE CONSOLE) */
