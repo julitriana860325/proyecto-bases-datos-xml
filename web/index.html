@@ -32,13 +32,7 @@
       </div>
 
       <nav class="nav-menu">
-        <button class="nav-item active" id="btn-intro" data-target="sec-intro">
-          <svg viewBox="0 0 24 24" class="nav-icon">
-            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-          </svg>
-          Presentación
-        </button>
-        <button class="nav-item" id="btn-sql" data-target="sec-sql">
+        <button class="nav-item active" id="btn-sql" data-target="sec-sql">
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path
               d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z" />
@@ -88,68 +82,6 @@
 
     <!-- Contenido Principal -->
     <main class="main-content">
-
-      <!-- SECCIÓN: PRESENTACIÓN -->
-      <section id="sec-intro" class="content-section active">
-        <header class="section-header">
-          <h1>Laboratorio #1: Almacenamiento y Validación XML</h1>
-          <p class="subtitle">Entorno interactivo de simulación y herramientas para el desarrollo de actividades.</p>
-        </header>
-
-        <div class="card-grid">
-          <div class="card card-full">
-            <h2>Objetivos del Laboratorio</h2>
-            <p>Este laboratorio práctico tiene como objetivo aplicar conocimientos sobre bases de datos XML nativas e
-              híbridas en el SGBD Oracle 11g. Las actividades están divididas en 4 partes fundamentales:</p>
-            <div class="steps-grid">
-              <div class="step-card">
-                <div class="step-num">1</div>
-                <h3>Consulta SQL/XML</h3>
-                <p>Generación de estructuras XML a partir de tablas relacionales de la base de datos de ejemplo (esquema
-                  HR) uniendo <code>EMPLOYEES</code> y <code>DEPARTMENTS</code>.</p>
-              </div>
-              <div class="step-card">
-                <div class="step-num">2</div>
-                <h3>Esquema XML (XSD)</h3>
-                <p>Construcción y modelado de un esquema XSD que defina y valide la estructura exacta de los datos XML
-                  generados en la consulta.</p>
-              </div>
-              <div class="step-card">
-                <div class="step-num">3</div>
-                <h3>Validación</h3>
-                <p>Validación interactiva del archivo XML recuperado comparándolo contra las reglas y restricciones del
-                  esquema XSD diseñado.</p>
-              </div>
-              <div class="step-card">
-                <div class="step-num">4</div>
-                <h3>Oracle XML DB</h3>
-                <p>Registro lógico del esquema mediante PL/SQL, creación de tablas tipadas <code>XMLTYPE</code> e
-                  inserción de datos correctos y erróneos para verificar la validación en el motor.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h2>Requisitos del Entorno</h2>
-            <ul>
-              <li><strong>Motor BD:</strong> Oracle Database (11g o superior) con esquema de prueba <code>HR</code>
-                activado.</li>
-              <li><strong>Cliente SQL:</strong> Oracle SQL Developer para ejecutar comandos y consultas.</li>
-              <li><strong>Soporte XML DB:</strong> Activación y permisos sobre paquetes como
-                <code>DBMS_XMLSCHEMA</code>.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h2>Entregables Requeridos</h2>
-            <ul>
-              <li><strong>Código Fuente:</strong> Ficheros SQL estructurados con consultas, registro e inserciones.</li>
-              <li><strong>Memoria de Práctica:</strong> Explicación de los pasos, justificación técnica del código y
-                capturas del proceso. Puedes generar un borrador en la última sección de esta web.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
 
       <!-- SECCIÓN: 1. CONSULTA SQL/XML -->
       <section id="sec-sql" class="content-section">
